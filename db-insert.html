@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <script src="db-insert.php"></script>
+      <title>DB Insert</title>
+  </head>
+  <body>
+    <h2>Insert into Database</h2>
+    <form action="db-insert.php" method="post" enctype="multipart/form-data">
+      Name:<br>
+      <input type="text" name="name" required="required" pattern="^\b(?:[A-Z]\w*\b(?:\s*)?)+$" title="Please capitalize each name and/or initial."><br>
+      Phone Number:<br>
+      <input type="text" name="phone" required="required" pattern="^([0-9]{7}|[0-9]{10})$" title="Please use the following format: ####### or ##########."><br>
+      Age:<br>
+      <input type="number" name="age" required="required"><br><br>
+      <input type="submit" value="Submit">
+    </form>
+  </body>
+</html>
