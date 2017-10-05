@@ -10,7 +10,28 @@
   if (!$conn) {
       die("Connection failed: " . mysqli_connect_error());
   }
-    $querystr="SELECT * FROM friend";
+
+  echo '
+  <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <script src="db-searchname.php"></script>
+        <title>DB Search Name</title>
+    </head>
+    <body>
+      <h2>Insert into Database</h2>
+      <form action="db-searchname.php" method="post" enctype="multipart/form-data">
+        Name:<br>
+        <input type="text" name="name" required="required"><br><br>
+        <input type="submit" name="submit" value="Search">
+      </form>
+    </body>
+  </html>
+  ';
+
+  if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $querystr="SELECT * FROM friend WHERE name LIKE '%$name%'";
     $result = $conn->query ($querystr);
 
     // establish the HTML table
@@ -20,7 +41,7 @@
         echo "<tr><td>" . $row['name'] . "</td><td>" . format_phone_number($row['phone']) . "</td><td>" . $row['age'] . "</td></tr>";
     }
     echo "</table>";
-
+  }
     // to be called whenever needed
     function format_phone_number($phone) {
       // get length of the number and pass to a switch
