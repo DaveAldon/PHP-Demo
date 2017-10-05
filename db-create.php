@@ -13,7 +13,7 @@
   }
 
   // sql to drop table
-  $dropsql = "DROP TABLE friend";
+  $dropsql = "DROP TABLE IF EXISTS friend;";
 
   // sql to create table
   $sql = "CREATE TABLE friend (
